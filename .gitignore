@@ -34,6 +34,4 @@ build/
 
 
 # Ignore real config files
-src/main/resources/application.yaml
-src/main/resources/application-local.yaml
 *.env
