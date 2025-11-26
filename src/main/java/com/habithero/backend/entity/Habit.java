@@ -12,6 +12,7 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
+@Table(name = "habits")
 public class Habit {
 
     @Id
@@ -20,11 +21,13 @@ public class Habit {
 
     private String title;
     private String description;
-    private String frequency;       //Can define daily, weekly etc.
 
-    private LocalDate createdAt = LocalDate.now();
+    @Enumerated(EnumType.STRING)
+    private Frequency frequency;       //Can define daily, weekly etc.
 
-    @ManyToOne
+    private boolean completeToday = false;
+
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
     private User user;
 
